@@ -10,7 +10,10 @@ const app = express();
 
 // Init Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || '*',
+  credentials: true
+}));
 
 // Define Routes
 app.use('/api/auth', require('./routes/auth'));
